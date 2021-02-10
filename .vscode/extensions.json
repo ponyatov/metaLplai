@@ -2,7 +2,7 @@
     "recommendations": [
         "stkb.rewrap",
         "auchenberg.vscode-browser-preview",
-        "tabnine.tabnine-vscode",
-        "ms-python.python",
+        // "tabnine.tabnine-vscode",
+        // "ms-python.python",
     ]
 }

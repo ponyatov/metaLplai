@@ -1,0 +1,4 @@
+.online		{ background: #0F03; }
+.offline	{ background: #F005; }
+#localtime  { position: absolute; top:0; right:0;   }
+.nav-logo   { min-height: 9vh; max-height: 9vh;     }

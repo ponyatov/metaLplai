@@ -5,4 +5,5 @@
 
 github: https://github.com/ponyatov/metaLplai
 
-PLAI: https://www.plai.org/
+* PLAI: https://www.plai.org
+    * http://cs.brown.edu/courses/cs173/2012/book/

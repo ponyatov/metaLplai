@@ -23,7 +23,8 @@ PYT          = $(BIN)/pytest
 # / <section:tool>
 # \ <section:src>
 M += $(shell find $(MODULE) -type f -regex ".+.py$$")
-T += test/__init__.py test/$(MODULE).py
+T += test/__init__.py test/test_$(MODULE).py
+P += config.py
 M += PLAI.py
 S += $(M) $(T) $(P)
 # / <section:src>
@@ -33,17 +34,18 @@ all: $(PY) PLAI.py
 	$^ $@
 
 .PHONY: web
-web: $(PY) web.py $(S)
+web: $(PY) PLAI.py
 	$^
 
 .PHONY: $(PEP)
 pep: $(PEP)
 $(PEP): $(S)
+	$(MAKE) test
 	$(PEP) --ignore=E26,E302,E401,E402 --in-place $? && touch $@
 
 .PHONY: test
 test: $(PYT) $(T)
-	$< $@
+	$< test
 
 .PHONY: repl
 repl: $(PY) $(M)
@@ -110,11 +112,12 @@ $(PYT):
 # / <section:install/py>
 # / <section:install>
 # \ <section:merge>
-MERGE  = Makefile README.md .vscode $(S)
+MERGE  = Makefile README.md .vscode $(M) $(T)
 MERGE += apt.txt requirements.txt
 MERGE += static templates
-.PHONY: main
-main:
+MERGE += .project .pydevproject
+.PHONY: master
+master:
 	git push -v
 	git checkout $@
 	git pull -v
